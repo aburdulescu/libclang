@@ -1,3 +1,8 @@
 *~
+
 *.tar.gz
+
+llvm-project-*
+
 libclang/
+libclang-build/

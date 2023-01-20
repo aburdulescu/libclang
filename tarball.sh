@@ -5,14 +5,17 @@ set -xe
 version=15.0.0
 arch=$(uname -m)
 os=$(lsb_release -si)
-os_version=$(lsb_release -si)
+os_version=$(lsb_release -sr)
 
-tarball=libclang-$version-$arch-$os_$os_version.tar.gz
+name=libclang-"$version"-"$arch"-"$os"_"$os_version"
+tarball="$name".tar.gz
 
-rm $tarball
+rm -f $tarball
 
-strip -s libclang/lib/*
+cp -r libclang $name
 
-cp env.sh libclang/
+strip -s $name/lib/*
 
-tar czf $tarball libclang
+cp env.sh $name/
+
+tar czf $tarball $name

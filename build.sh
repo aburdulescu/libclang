@@ -16,7 +16,6 @@ fi
 
 export CC=gcc
 export CXX=g++
-#export CXXFLAGS="-static-libgcc -static-libstdc++"
 export LDFLAGS="-static-libgcc -static-libstdc++"
 
 cmake \

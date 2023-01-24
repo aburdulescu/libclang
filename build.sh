@@ -14,8 +14,10 @@ then
     tar xf llvm-project-$version.src.tar.xz
 fi
 
-export CC=clang
-export CXX=clang++
+export CC=gcc
+export CXX=g++
+#export CXXFLAGS="-static-libgcc -static-libstdc++"
+export LDFLAGS="-static-libgcc -static-libstdc++"
 
 cmake \
     -S llvm-project-$version.src/llvm \

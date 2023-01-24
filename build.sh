@@ -16,17 +16,18 @@ fi
 
 export CC=clang
 export CXX=clang++
-export CFLAGS=-g
-export CXXFLAGS=-g
 
 cmake \
     -S llvm-project-$version.src/llvm \
     -B libclang-build \
     -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=$PWD/libclang \
     -DLLVM_CCACHE_BUILD=ON \
     -DLLVM_ENABLE_PROJECTS="clang" \
-    -DLLVM_TARGETS_TO_BUILD=""
+    -DLLVM_TARGETS_TO_BUILD="" \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DLLVM_ENABLE_TERMINFO=OFF \
+    -DLLVM_ENABLE_ZLIB=OFF
 
 ninja -C libclang-build install-libclang install-libclang-headers

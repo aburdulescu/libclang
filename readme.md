@@ -1,5 +1,7 @@
 # libclang
 
+Precompiled libclang.so for Ubuntu.
+
 ## Usage
 
 Install needed tools: `./tools.sh`

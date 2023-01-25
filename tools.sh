@@ -3,4 +3,4 @@
 set -xe
 
 apt update
-apt install -y cmake wget ninja-build ccache
+apt install -y build-essential cmake wget ninja-build ccache python3 lsb-release

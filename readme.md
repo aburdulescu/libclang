@@ -1,6 +1,6 @@
 # libclang
 
-Precompiled libclang.so for Ubuntu.
+Precompiled libclang.so for Linux.
 
 ## Usage
 

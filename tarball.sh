@@ -4,10 +4,9 @@ set -xe
 
 version=15.0.0
 arch=$(uname -m)
-os=$(lsb_release -si)
-os_version=$(lsb_release -sr)
+glibc_version=glibc_$(./glibc-version.sh)
 
-name=libclang-"$version"-"$arch"-"$os"_"$os_version"
+name=libclang-"$version"-"$arch"-"linux"-"$glibc_version"
 tarball="$name".tar.gz
 
 rm -rf $name $tarball

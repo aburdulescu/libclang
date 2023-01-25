@@ -3,4 +3,4 @@
 set -xe
 
 apt update
-apt install -y cmake wget ninja-build ccache lsb-release
+apt install -y cmake wget ninja-build ccache

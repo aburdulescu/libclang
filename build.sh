@@ -2,16 +2,21 @@
 
 set -xe
 
-version=15.0.0
+llvm_version=15.0.0
+llvm_dir=llvm-project-$llvm_version.src
+llvm_tarball=$llvm_dir.tar.xz
 
 rm -rf \
    libclang-build \
    libclang
 
-if [ ! -d llvm-project-$version.src ]
+if [ ! -d "$llvm_dir" ]
 then
-    wget https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-project-$version.src.tar.xz
-    tar xf llvm-project-$version.src.tar.xz
+    if [ ! -e "$llvm_tarball" ]
+    then
+	wget https://github.com/llvm/llvm-project/releases/download/llvmorg-$llvm_version/$llvm_tarball
+    fi
+    tar xf $llvm_tarball
 fi
 
 export CC=gcc
@@ -19,7 +24,7 @@ export CXX=g++
 export LDFLAGS="-static-libgcc -static-libstdc++"
 
 cmake \
-    -S llvm-project-$version.src/llvm \
+    -S $llvm_dir/llvm \
     -B libclang-build \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -28,6 +33,7 @@ cmake \
     -DLLVM_ENABLE_PROJECTS="clang" \
     -DLLVM_TARGETS_TO_BUILD="" \
     -DBUILD_SHARED_LIBS=OFF \
+    -DLLVM_INCLUDE_TESTS=OFF \
     -DLLVM_ENABLE_TERMINFO=OFF \
     -DLLVM_ENABLE_ZLIB=OFF
 

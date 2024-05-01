@@ -2,7 +2,11 @@
 
 Precompiled libclang.so for Linux.
 
-## Usage
+## How to create a new release
+
+Start Ubuntu 18.04(using this to have an older glibc) docker container: `./docker.sh`
+
+Then in that container:
 
 Install needed tools: `./tools.sh`
 

@@ -1,18 +1,23 @@
 #!/bin/sh
 
+if [ $# -ne 1 ]
+then
+    echo "need version"
+    exit 1
+fi
+version=$1
+
 set -xe
 
-version=15.0.0
 arch=$(uname -m)
-os=$(lsb_release -si)_$(lsb_release -sr)
 glibc=glibc_$(./glibc-version.sh)
 
-name=libclang-"$version"-"$arch"-"$os"-"$glibc"
+name=libclang-"$version"-"$arch"-"linux"-"gcc"-"$glibc"
 tarball="$name".tar.gz
 
 rm -rf $name $tarball
 
-cp -r libclang $name
+cp -r libclang-dist-$version $name
 
 strip -s $name/lib/*
 

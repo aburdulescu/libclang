@@ -4,5 +4,6 @@
 
 llvm-project-*
 
-libclang*/
-libclang-build/
+libclang-*/
+
+cmake-*.sh
